@@ -1,0 +1,16 @@
+{
+  "name": "chatweb-mern",
+  "version": "1.0.0",
+  "description": "chat-web-application-mern",
+  "main": "server.js",
+  
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "chat",
+    "mern"
+  ],
+  "author": "chetna",
+  "license": "ISC"
+}
