@@ -8,6 +8,7 @@ const Message = ({message})=> {
    const {selectedConversation}=  useConversation()
    const fromMe = message.senderid === authUser.data.user._id
    const formattedTime  = extractTime(message.createdAt)
+   const shakeClass = message.shouldShake ? "shake":""
    console.log(message.senderid)
    console.log(authUser.data.user._id)
   //  console.log(authUser._id)
@@ -26,7 +27,7 @@ const Message = ({message})=> {
                 <img src={profilePic} alt="user avatar" /> 
                 </div>
             </div>
-            <div className={`chat-bubble text-white  ${bubbleBgColor}`}>{message.message}</div>
+            <div className={`chat-bubble text-white  ${bubbleBgColor} ${shakeClass}`}>{message.message}</div>
             <div className='chat-footer opacity-1 text-gray-300 text-xs flex gap-1 items-center'> {formattedTime}</div>
 
     </div>

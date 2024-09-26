@@ -7,6 +7,7 @@ import './index.css'
 // import { Provider } from 'react-redux'
 import {BrowserRouter} from  'react-router-dom'
 import { AuthContextProvider } from './Context/AuthContext.jsx'
+import { SocketContextProvider } from './Context/SocketContext.jsx'
 // import Home from './pages/Home/Home.jsx'
 // import Login from './pages/Login/Login.jsx'
 // import SignUp from './pages/SignUp/SignUp.jsx'
@@ -41,7 +42,9 @@ createRoot(document.getElementById('root')).render(
 
     <BrowserRouter>
     <AuthContextProvider>
+      <SocketContextProvider>
     <App/>
+    </SocketContextProvider>
     </AuthContextProvider>
 
     </BrowserRouter>
