@@ -47,15 +47,8 @@ const signUp = asyncHandler(async (req, res) => {
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
 
-
-
-
-
     const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`
     const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
-
-
-
 
     const user = await User.create({
         fullname,
@@ -74,12 +67,7 @@ const signUp = asyncHandler(async (req, res) => {
     if(!createdUser){
         throw new ApiError(500,"something went wron while registering the user")
     }
-
-
-
     // user.save()
-
-
     return res
         .status(201)
         .json(new ApiResponse(201, createdUser, " User Signup  Successfully"))

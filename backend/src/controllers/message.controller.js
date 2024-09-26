@@ -13,6 +13,8 @@ try {
      const {message} = req.body
      const {id : recieverid} = req.params
      const senderid = req.user._id
+
+     console.log(`Sender ID: ${senderid}, Receiver ID: ${recieverid}`);
  
     let conversation= await Conversation.findOne({
          participants:{
@@ -57,13 +59,15 @@ const getMessage = asyncHandler(async(req,res)=>{
         const {id:  userToChatId} = req.params
         const senderid = req.user._id
 
+        // console.log(`Sender ID: ${senderid}, User To Chat ID: ${userToChatId}`);
+
         const conversation = await Conversation.findOne({
             participants:{
                 $all:[senderid,userToChatId]
             }
         }).populate("messages")
 
-        console.log(conversation)
+        // console.log(conversation)
 
         if(!conversation){
             return res.status(200)
@@ -71,7 +75,7 @@ const getMessage = asyncHandler(async(req,res)=>{
         }
 
         const message = conversation.messages
-        console.log(message)
+        // console.log(message)
 
         return res
         .status(200)
