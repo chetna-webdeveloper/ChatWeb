@@ -9,15 +9,15 @@ const Message = ({message})=> {
    const fromMe = message.senderid === authUser.data.user._id
    const formattedTime  = extractTime(message.createdAt)
    const shakeClass = message.shouldShake ? "shake":""
-   console.log(message.senderid)
-   console.log(authUser.data.user._id)
+  //  console.log(message.senderid)
+  //  console.log(authUser.data.user._id)
   //  console.log(authUser._id)
 
-   console.log(fromMe)
+  //  console.log(fromMe)
    const chatClassName = fromMe ? "chat-end" :"chat-start"
    const profilePic = fromMe ? authUser.data.user.profilePic :selectedConversation?.profilePic;
-   console.log(authUser.data.user.profilePic)
-   console.log(selectedConversation?.profilePic)
+  //  console.log(authUser.data.user.profilePic)
+  //  console.log(selectedConversation?.profilePic)
 
    const bubbleBgColor = fromMe ? "bg-blue-500" : "" ;
   return (

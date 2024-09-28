@@ -3,20 +3,17 @@ import {ApiError} from '../utils/ApiError.js'
 import {ApiResponse} from '../utils/ApiResponse.js'
 import { Conversation } from "../models/conversation.model.js";
 import {Message} from '../models/message.model.js'
-import { getReceiverSocketId, io } from "../socket/socket.js";
+import { io } from "../../app.js";
+import { getRecieverSockedId } from "../../app.js";
+// import { getReceiverSocketId, io } from "../socket/socket.js";
 
 
 const sendMessage = asyncHandler(async(req,res)=>{
-   
-
 try {
-     // console.log("message sent " ,req.params.id)
      const {message} = req.body
      const {id : recieverid} = req.params
      const senderid = req.user._id
-
-     console.log(`Sender ID: ${senderid}, Receiver ID: ${recieverid}`);
- 
+    //  console.log(`Sender ID: ${senderid}, Receiver ID: ${recieverid}`);
     let conversation= await Conversation.findOne({
          participants:{
              $all:   [senderid,recieverid]
@@ -47,10 +44,11 @@ try {
      await Promise.all([conversation.save(),newMessage.save()])
 
       //Socket io funtionality
-   const recieverSocketId = getReceiverSocketId(recieverid)
-   if(recieverSocketId){
-    io.to(recieverSocketId).emit("newMessage",newMessage)
-   }
+
+      const recieverSocketId = getRecieverSockedId(recieverid)
+      if(recieverSocketId){
+        io.to(recieverSocketId).emit("newMessage",newMessage)
+      }
 
      return res.status(200)
      .json(new ApiResponse(200,newMessage,"Message sent successfully"))

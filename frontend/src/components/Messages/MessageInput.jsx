@@ -11,7 +11,7 @@ const MessageInput=() =>{
         if(!message)return
         await sendMessage(message)
         setMessage("")
-        console.log(message)
+        // console.log(message)
     }
   return (
 <form className='px-4 my-3' onSubmit={handleSubmit}>
