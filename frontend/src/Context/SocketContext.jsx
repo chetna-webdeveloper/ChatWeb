@@ -15,7 +15,7 @@ import { useAuthContext } from "./AuthContext";
 
   useEffect(() => {
     if (authUser) {
-      const newSocket = io("http://localhost:5000",{
+      const newSocket = io("https://chatweb-1-cnmt.onrender.com/",{
         query:{
           userid: authUser.data.user._id
         }
