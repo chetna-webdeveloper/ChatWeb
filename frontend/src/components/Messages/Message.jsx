@@ -27,7 +27,9 @@ const Message = ({message})=> {
                 <img src={profilePic} alt="user avatar" /> 
                 </div>
             </div>
-            <div className={`chat-bubble text-white  ${bubbleBgColor} ${shakeClass}`}>{message.message}</div>
+            <div className={`chat-bubble text-white break-words   ${bubbleBgColor} ${shakeClass}`}
+              dangerouslySetInnerHTML={{ __html: message.message.replace(/\n/g, '<br />') }}
+            ></div>
             <div className='chat-footer opacity-1 text-gray-300 text-xs flex gap-1 items-center'> {formattedTime}</div>
 
     </div>
